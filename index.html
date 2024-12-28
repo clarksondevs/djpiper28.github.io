@@ -1,114 +1,206 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-<meta charset="utf-8">
-<meta http-equiv="refresh" content="0; URL="https://www.djpiper28.co.uk/" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Djpiper28.github.io</title>
-<link href="css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Djpiper28.github.io</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Custom Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    .hover-scale {
+      transition: transform 0.2s ease-in-out;
+    }
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+    .high-contrast {
+      filter: contrast(200%);
+    }
+    .large-text {
+      font-size: 1.25rem;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+      border: 3px solid #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>
 </head>
-<body>
-<div class="bg-blue px-3 py-5"><div width="100%">
-	<div><h2 class="rounded-full flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2">DJPIPER28.GITHUB.IO - INDEX</h2></div>
-	<button class="rounded-full px-4 py-2 m-2 text-white text-center bg-green" onClick="myGithub();">My Github Page</button>
-	<div class="rounded-full bg-blue-dark py-2">
-	<h2 class="text-white text-center">Useful Projects</h2></div>
-	<ul class="rounded-lg flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2">
-		<li><button class="px-4 py-2 m-2 text-center" onClick="binSorting();">Bin Sorting Algorithm Demo
-		</button>
-		</li>	
-		<li><button class="px-4 py-2 m-2 text-center" onClick="cipherSolvervignere();">Cipher Solver (Vignere Only)
-		</button>
-		</li>
-		<li><button class="px-4 py-2 m-2 text-center" onClick="cipherSolverlegacy();">Cipher Solver (Legacy)
-		</button>
-		</li>		
-		<li><button class="px-4 py-2 m-2 text-center" onClick="snake();">Snake in Java (SE 9)
-		</button>
-		</li>
-		<li><button class="px-4 py-2 m-2 text-center" onClick="pong();">Pong in Java (SE 9)
-		</button>
-		</li>
-		<li><button class="px-4 py-2 m-2 text-center" onClick="windowsxpshutdownsound();">Windows XP Sound Board
-		</button>
-		</li>
-	</ul>	
-	<div class="rounded-full bg-blue-dark">
-	<h2 class="text-white text-center rounded-full py-2">Random Projects</h2></div>
-	<ul class="rounded-lg flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2">
-		<li><button class="px-4 py-2 m-2 text-center" onClick="animatedText();">Animated Text Demo
-		</button>
-		</li>
-		<li><button class="px-4 py-2 m-2 text-center" onClick="postMoonLordModWiki();">My Terraria Mod's Wiki
-		</button>
-		</li>
-		<li><button class="px-4 py-2 m-2 text-center" onClick="chestOpener();">Clash Royale Chest Simulator
-		</button>
-		</li>
-	</ul>
-	<div id="unhide">
-	<button id="unhide" class="rounded-full px-4 py-2 m-2 text-white text-center bg-green-dark" onClick="uunhide();">Other Things (show)</button>
-	</div>
-	<div class="rounded-full bg-dark-blue"><p class="text-white py-2 px-2">Made by Danny Piper</p></div>
-	</div>
-	</div>	
+<body class="bg-gradient-to-br from-blue-50 to-purple-50 text-gray-900">
+  <!-- Accessibility Button -->
+  <div class="fixed bottom-4 right-4 z-50">
+    <button id="accessibilityButton" class="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform transform hover:scale-110">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+      </svg>
+    </button>
+    <div id="accessibilityMenu" class="hidden absolute bottom-16 right-0 bg-white p-4 rounded-lg shadow-md space-y-2 fade-in">
+      <button onclick="toggleHighContrast()" class="block w-full text-left hover:bg-gray-100 p-2 rounded transition-colors">High Contrast</button>
+      <button onclick="toggleLargeText()" class="block w-full text-left hover:bg-gray-100 p-2 rounded transition-colors">Large Text</button>
+      <a href="#mainContent" class="block w-full text-left hover:bg-gray-100 p-2 rounded transition-colors">Skip to Content</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div id="mainContent" class="container mx-auto px-4 py-8">
+    <div class="bg-white bg-opacity-90 backdrop-blur-md rounded-lg shadow-xl p-8">
+      <h1 class="text-4xl font-bold text-center text-blue-600 mb-8 animate-pulse">DJPIPER28.GITHUB.IO</h1>
+      <div class="space-y-8">
+        <!-- My Github Page Button -->
+        <button onclick="myGithub()" class="w-full bg-gradient-to-r from-green-400 to-blue-500 text-white py-3 px-6 rounded-full hover:from-green-500 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all transform hover:scale-105">
+          My Github Page
+        </button>
+
+        <!-- Useful Projects Section -->
+        <div>
+          <h2 class="text-2xl font-semibold text-center text-blue-600 mb-4">Useful Projects</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <button onclick="binSorting()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Bin Sorting Algorithm Demo</h3>
+            </button>
+            <button onclick="cipherSolvervignere()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Cipher Solver (Vignere Only)</h3>
+            </button>
+            <button onclick="cipherSolverlegacy()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Cipher Solver (Legacy)</h3>
+            </button>
+            <button onclick="snake()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Snake in Java (SE 9)</h3>
+            </button>
+            <button onclick="pong()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Pong in Java (SE 9)</h3>
+            </button>
+            <button onclick="windowsxpshutdownsound()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Windows XP Sound Board</h3>
+            </button>
+          </div>
+        </div>
+
+        <!-- Random Projects Section -->
+        <div>
+          <h2 class="text-2xl font-semibold text-center text-blue-600 mb-4">Random Projects</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <button onclick="animatedText()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Animated Text Demo</h3>
+            </button>
+            <button onclick="postMoonLordModWiki()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">My Terraria Mod's Wiki</h3>
+            </button>
+            <button onclick="chestOpener()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Clash Royale Chest Simulator</h3>
+            </button>
+          </div>
+        </div>
+
+        <!-- Other Things Section -->
+        <div id="unhide">
+          <button onclick="uunhide()" class="w-full bg-gradient-to-r from-purple-400 to-pink-500 text-white py-3 px-6 rounded-full hover:from-purple-500 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all transform hover:scale-105">
+            Other Things (show)
+          </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-gray-600 mt-8">
+          <p>Made by Danny Piper</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Accessibility Menu Toggle
+    const accessibilityButton = document.getElementById('accessibilityButton');
+    const accessibilityMenu = document.getElementById('accessibilityMenu');
+    accessibilityButton.addEventListener('click', () => {
+      accessibilityMenu.classList.toggle('hidden');
+    });
+
+    // High Contrast Toggle
+    function toggleHighContrast() {
+      document.body.classList.toggle('high-contrast');
+    }
+
+    // Large Text Toggle
+    function toggleLargeText() {
+      document.body.classList.toggle('large-text');
+    }
+
+    // Unhide/Hide Functionality
+    function uunhide() {
+      document.getElementById('unhide').innerHTML = `
+        <button onclick="hide()" class="w-full bg-gradient-to-r from-purple-400 to-pink-500 text-white py-3 px-6 rounded-full hover:from-purple-500 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all transform hover:scale-105">
+          Other Things (hide)
+        </button>
+        <div class="mt-8">
+          <h2 class="text-2xl font-semibold text-center text-blue-600 mb-4">Other Things</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <button onclick="flappyBird()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Flappy Bird Clone</h3>
+            </button>
+            <button onclick="pong()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Pong Clone</h3>
+            </button>
+            <button onclick="tankTrouble()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Tank Trouble</h3>
+            </button>
+            <button onclick="ballCollecter()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Ball Collecter</h3>
+            </button>
+            <button onclick="runAndJump()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Run And Jump</h3>
+            </button>
+            <button onclick="coc()" class="bg-white p-6 rounded-lg shadow-md hover-scale transition-transform transform hover:shadow-lg">
+              <h3 class="text-lg font-semibold text-blue-600">Call of Corbyn</h3>
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function hide() {
+      document.getElementById('unhide').innerHTML = `
+        <button onclick="uunhide()" class="w-full bg-gradient-to-r from-purple-400 to-pink-500 text-white py-3 px-6 rounded-full hover:from-purple-500 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all transform hover:scale-105">
+          Other Things (show)
+        </button>
+      `;
+    }
+
+    // External Link Functions
+    function cipherSolverlegacy() { window.open("https://github.com/djpiper28/Dp-Cypher-Solver"); }
+    function cipherSolvervignere() { window.open("https://github.com/djpiper28/vignere-cipher-brute-force-program"); }
+    function chestOpener() { window.open("https://djpiper28.github.io/crChestSim/index.html"); }
+    function flappyBird() { window.open("https://djpiper28.github.io/flappy%20bird.html"); }
+    function pong() { window.open("https://djpiper28.github.io/pong.html"); }
+    function myGithub() { window.open("https://github.com/djpiper28"); }
+    function tankTrouble() { window.open("https://djpiper28.github.io/tank%20trouble%20thing.html"); }
+    function ballCollecter() { window.open("https://djpiper28.github.io/ball%20collecter.html"); }
+    function runAndJump() { window.open("https://djpiper28.github.io/Run%20and%20Jump.html"); }
+    function coc() { window.open("https://djpiper28.github.io/CallOfCorbyn/callOfCorbyn.html"); }
+    function animatedText() { window.open("https://djpiper28.github.io/animated%20text.html"); }
+    function postMoonLordModWiki() { window.open("https://djpiper28.github.io/PostMoonLordWiki/index.html"); }
+    function snake() { window.open("https://github.com/djpiper28/Snake-in-java"); }
+    function binSorting() { window.open("https://github.com/djpiper28/Bin-Sort---First-Fit"); }
+    function windowsxpshutdownsound() { window.open("https://djpiper28.github.io/windowsxpshutdownsound.html"); }
+  </script>
 </body>
-<script>
-	function uunhide(){
-		document.getElementById("unhide").innerHTML="<div id=\"unhide\"><button class=\"rounded-full px-4 py-2 m-2 text-white text-center bg-green-dark\" onClick=\"hide();\">Other Things (hide)</button><div class=\"rounded-full bg-blue-dark\"><h2 class=\"text-white text-center rounded-full py-2\">Other Things</h2></div><ul class=\"rounded-lg flex-initial text-grey-darker text-center bg-grey-light px-4 py-2 m-2 \"><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"flappyBird();\">Flappy Bird Clone</button>			</li>			<li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"pong();\">Pong Clone</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"tankTrouble();\">Tank Trouble</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"ballCollecter();\">Ball Collecter</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"runAndJump();\">Run And Jump</button></li><li><button class=\"px-4 py-2 m-2 text-center\" onClick=\"coc();\">Call of Corbyn</button></li></ul></div>";		
-	}
-	function hide(){
-		document.getElementById("unhide").innerHTML="<div id=\"unhide\"><button class=\"rounded-full px-4 py-2 m-2 text-white text-center bg-green-dark\" onClick=\"uunhide();\">Other Things (show)</button></div>";
-	}
-	function cipherSolverlegacy(){
-			window.open("https://github.com/djpiper28/Dp-Cypher-Solver")
-	}
-	function cipherSolvervignere(){
-			window.open("https://github.com/djpiper28/vignere-cipher-brute-force-program")
-	}	
-	function chestOpener(){
-			window.open("https://djpiper28.github.io/crChestSim/index.html");
-	}
-	function flappyBird(){
-			window.open("https://djpiper28.github.io/flappy%20bird.html");	
-	}
-	function pong(){
-			window.open("https://djpiper28.github.io/pong.html");
-	}
-	function myGithub(){
-			window.open("https://github.com/djpiper28");
-	}
-	function tankTrouble(){
-			window.open("https://djpiper28.github.io/tank%20trouble%20thing.html");
-	}
-	function ballCollecter(){
-			window.open("https://djpiper28.github.io/ball%20collecter.html");
-	}
-	function runAndJump(){
-			window.open("https://djpiper28.github.io/Run%20and%20Jump.html");
-	}
-	function coc(){
-			window.open("https://djpiper28.github.io/CallOfCorbyn/callOfCorbyn.html");
-	}
-	function animatedText(){
-			window.open("https://djpiper28.github.io/animated%20text.html");
-	}
-	function postMoonLordModWiki(){		
-			window.open("https://djpiper28.github.io/PostMoonLordWiki/index.html");
-	}
-	function snake(){
-			window.open("https://github.com/djpiper28/Snake-in-java");
-	}
-	function pong(){
-			window.open("https://github.com/djpiper28/Pong-in-Java");
-	}
-	function binSorting(){
-			window.open("https://github.com/djpiper28/Bin-Sort---First-Fit");
-	}
-	function windowsxpshutdownsound(){
-			window.open("https://djpiper28.github.io/windowsxpshutdownsound.html");
-	}
-</script>
 </html>
